@@ -105,6 +105,10 @@ function detect_webbrowser($useragent){
 		$link="http://opera.com";
 		$title="Opera";
 		$code.="opera";
+	}elseif(preg_match('/w3m/i', $useragent)){
+		$link="http://w3m.sourceforge.net/";
+		$title="W3M";
+		$code="w3m";
 	}elseif(preg_match('/Mozilla/i', $useragent)){
 		detect_mozillas($useragent);
 	}else{
@@ -197,7 +201,7 @@ function detect_distro(){
 		$link="http://slackware.com/";
 		$os="Slackware";
 		$code.="slackware";
-	}elseif(preg_match('/(OLPC)?(XO)?/', $useragent)){
+	}elseif(preg_match('/OLPC/', $useragent)){
 		$link="http://laptop.org/";
 		$os="OLPC (XO)";
 		$code.="olpc";
