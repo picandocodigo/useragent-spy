@@ -48,6 +48,22 @@ function detect_mozillas(){
 		$link="http://gnome.org/projects/epiphany/";
 		$title="Epiphany";
 		$code.="epiphany";
+	}elseif(preg_match('/Camino/i', $useragent)){
+		$link="http://caminobrowser.org/";
+		$title="Camino";
+		$code.="camino";
+	}elseif(preg_match('/Minefield/i', $useragent)){
+		$link="http://www.mozilla.org/projects/minefield/";
+		$title="Minefield";
+		$code.="minefield";
+	}elseif(preg_match('/Iceape/i', $useragent)){
+		$link="http://packages.debian.org/iceape";
+		$title="IceApe";
+		$code.="iceape";
+	}elseif(preg_match('/SeaMonkey/i', $useragent)){
+		$link="http://www.seamonkey-project.org/";
+		$title="SeaMonkey";
+		$code.="seamonkey";
 	}elseif (preg_match('/Firefox/i', $useragent)){
 		$link="http://mozilla.org";
 		$title="Firefox";
@@ -68,7 +84,11 @@ function detect_mozillas(){
 		$link="http://www.gnome.org/projects/epiphany/";
 		$title="Epiphany";
 		$code.="epiphany";
-	}elseif (preg_match('/IE/', $useragent)){
+	}elseif (preg_match('/Lobo/i', $useragent)){
+		$link="http://lobobrowser.org/";
+		$title="Lobo";
+		$code.="lobo";
+	}elseif (preg_match('/MSIE/', $useragent)){
 		detect_ies();
 	}else{
 		$link="http://mozilla.org";
@@ -93,6 +113,10 @@ function detect_webbrowser($useragent){
 		$link="http://code.google.com/p/arora/";
 		$title="Arora";
 		$code.="arora";
+	}elseif (preg_match('/Amaya/i', $useragent)){
+		$link="http://www.w3.org/Amaya/";
+		$title="Amaya";
+		$code.="amaya";
 	}elseif (preg_match('/Konqueror/i', $useragent)){
 		$link="http://konqueror.kde.org";
 		$title="Konqueror";
@@ -108,7 +132,15 @@ function detect_webbrowser($useragent){
 	}elseif(preg_match('/w3m/i', $useragent)){
 		$link="http://w3m.sourceforge.net/";
 		$title="W3M";
-		$code="w3m";
+		$code.="w3m";
+	}elseif(preg_match('/NetSurf/i', $useragent)){
+		$link="http://www.netsurf-browser.org/";
+		$title="NetSurf";
+		$code.="netsurf";
+	}elseif(preg_match('/Maxthon/i', $useragent)){
+		$link="http://www.maxthon.com/";
+		$title="Maxthon";
+		$code.="maxthon";
 	}elseif(preg_match('/Mozilla/i', $useragent)){
 		detect_mozillas($useragent);
 	}else{
@@ -205,6 +237,10 @@ function detect_distro(){
 		$link="http://laptop.org/";
 		$os="OLPC (XO)";
 		$code.="olpc";
+	}elseif(preg_match('/Suse/i', $useragent)){
+		$link="http://www.opensuse.org/";
+		$os="SuSE";
+		$code.="suse";
 	}else{
 		$os="GNU/Linux";
 		$code.="linux";

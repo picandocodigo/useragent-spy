@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.6
-Stable tag: 0.4
+Stable tag: 0.4.1
 
 == Description ==
 
@@ -50,7 +50,9 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 == Release Notes ==
 
 0.4.1
-* OS added: OLPC XO
+* OS added: OLPC XO, SuSE
+* Browser added: W3M, Lobo, Amaya, Maxthon, Camino, NetSurf, Minefield, IceApe, SeaMonkey
+* Fixed some code (includes a bug where OLPC was detected for certain os's)
 
 0.4
 * Made "browsing with" and "on" words in "Browsing with browser on OS" customizable in the Options page.
