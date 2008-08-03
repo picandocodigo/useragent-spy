@@ -49,6 +49,16 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 
 == Release Notes ==
 
+Roadmap: 
+  0.5 
+    * Browser Versions
+    * O.S. Version (Windows)
+  0.6
+    * Links for O.S.
+
+0.4.2
+* Browser added: Lynx, Links
+
 0.4.1
 * OS added: OLPC XO, SuSE
 * Browser added: W3M, Lobo, Amaya, Maxthon, Camino, NetSurf, Minefield, IceApe, SeaMonkey
@@ -78,7 +88,6 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 0.1
 * Detects Mozilla, IceWeasel, IceCat, Arora, Safari, Konqueror.
 * Detects Windows, GNU/Linux, iPhone and MacOS 
-
 
 TO-DO:
 * Allow users to modify links for each browser/OS.
