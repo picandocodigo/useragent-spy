@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: Detects commenter's browser and Operative System and displays it.
-Version: 0.4s
+Version: 0.4.1
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
