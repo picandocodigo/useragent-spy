@@ -30,6 +30,7 @@ $surfing = get_option('uaspy_surfing'); //Word for "Using"
 $on=get_option('uaspy_on'); //Word for "on" 
 $url_img=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/";
 $url_os=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/os/";
+$location = get_option('uaspy_location');
 
 function img($title, $code){
 	global $size, $url_img;
@@ -256,18 +257,35 @@ function detect_distro(){
 }
 
 function useragent_spy(){
-	global $comment, $useragent;
+	global $comment, $useragent, $location;
 	get_currentuserinfo();
 	$useragent= $comment->comment_agent;
-	$location = get_option('uaspy_location');
 	if($location=="before"){
-		echo "<p>".detect_os($url_os, $url_img, $useragent)."<br />";
-		echo $comment->comment_content."</p>";
+		echo "<p>".detect_os($url_os, $url_img, $useragent);
+		uaspy_comment();
+		add_filter('comment_text', 'useragent_spy');	
 	}elseif($location=="after"){
-		echo "<p>".$comment->comment_content."<br />";
+		uaspy_comment();
 		echo detect_os($url_os, $url_img, $useragent)."</p>";
-	}else{
-		echo "<p>".$comment->comment_content."</p>";
+		add_filter('comment_text', 'useragent_spy');
+	}elseif($location=="custom"){
+		remove_filter('comment_text', 'useragent_spy');
+		echo detect_os($url_os, $url_img, $useragent);
+	}
+}
+
+function uaspy_comment(){
+	global $comment;
+	remove_filter('comment_text', 'useragent_spy');
+	apply_filters('get_comment_text', $comment->comment_content);	
+	echo apply_filters('comment_text', $comment->comment_content);	
+}
+
+//Deprecated, use useragent_spy() instead
+function useragent_spy_custom(){
+	global $location;
+	if($location=="custom"){
+		useragent_spy();
 	}
 }
 
@@ -275,21 +293,7 @@ function add_option_page(){
 	add_options_page('UserAgent Spy', 'UserAgent Spy', 'manage_options','useragent-spy/useragent-spy-options.php');
 }
 
-function useragent_spy_custom(){
-	global $comment, $useragent;
-	get_currentuserinfo();
-	$useragent= $comment->comment_agent;
-	$location = get_option('uaspy_location');
-	if($location=="custom"){
-		echo detect_os($url_os, $url_img, $useragent);
-	}
-}
-
 add_action('admin_head', 'add_option_page');
-add_action('comment_text', 'useragent_spy');
-
-/* TODO: 
- * Browser version
-*/
+add_filter('comment_text', 'useragent_spy');
 
 ?>

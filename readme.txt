@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.6
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 
 == Description ==
 
@@ -49,15 +49,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 
 == Release Notes ==
 
-Roadmap: 
-  0.5 
-    * Browser Versions
-    * O.S. Version (Windows)
-  0.6
-    * Links for O.S.
-
 0.4.2
 * Browser added: Lynx, Links
+* Fixed bug where the comments would show without filters.
+* Changed Konqueror icon for new 4.0 version.
 
 0.4.1
 * OS added: OLPC XO, SuSE
@@ -94,3 +89,9 @@ TO-DO:
 * New browsers/os's are welcome.
 * Browser versions.
 * Links for Operative Systems.
+Roadmap: 
+  0.5 
+    * Browser Versions
+    * O.S. Version (Windows)
+  0.6
+    * Links for O.S.
