@@ -10,7 +10,7 @@ Stable tag: 0.4.2
 
 UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
 
-UserAgent Spy is a work in progress, and is still in early development stage. Version 0.4 can be considered stable and functional. I'm actually working on version 0.5.
+I’m adding new stuff and changing the code frequently. Your feedback is very important, new features have been added by request, so if there’s something you would like to see in UA-Spy, leave a comment, and I’ll see what I can do.
 
 UserAgent Spy was written with Geany - http://geany.uvena.de/
 Images created with The Gimp - http://www.gimp.org/
@@ -48,16 +48,25 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
     * Published under GPLv3.
 
 == Release Notes ==
+0.5
+* Option to show complete useragent string.
+* Went back to useragent_spy_custom() for custom display.
+* Several code fixes (W3C valid XHTML, more order, etc).
+* Saved settings are displayed correctly on the settings page.
+* Added option to display icons only, with no text or link.
+* Fixed bugs: 
+      -Epiphany, when built against WebKit would display Safari.
+      -Major bug which would show ua-spy in your comment management page, instead of comment text when using custom.
 
 0.4.2
-* Browser added: Lynx, Links
+* Browser added: Lynx, Links.
 * Fixed bug where the comments would show without filters.
 * Changed Konqueror icon for new 4.0 version.
 
 0.4.1
-* OS added: OLPC XO, SuSE
-* Browser added: W3M, Lobo, Amaya, Maxthon, Camino, NetSurf, Minefield, IceApe, SeaMonkey
-* Fixed some code (includes a bug where OLPC was detected for certain os's)
+* OS added: OLPC XO, SuSE.
+* Browser added: W3M, Lobo, Amaya, Maxthon, Camino, NetSurf, Minefield, IceApe, SeaMonkey.
+* Fixed some code (includes a bug where OLPC was detected for certain os's).
 
 0.4
 * Made "browsing with" and "on" words in "Browsing with browser on OS" customizable in the Options page.

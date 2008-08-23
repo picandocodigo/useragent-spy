@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 0.4.2
+Version: 0.5
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -12,8 +12,8 @@ Author URI: http://picandocodigo.net
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
+the Free Software Foundation; either version 3 of the License, or 
+any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -25,12 +25,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+$url_img=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/";
+$url_os=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/os/";
+
+//Plugin Options
 $size = get_option('uaspy_size'); //Image size
 $surfing = get_option('uaspy_surfing'); //Word for "Using"
 $on=get_option('uaspy_on'); //Word for "on" 
-$url_img=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/";
-$url_os=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/os/";
 $location = get_option('uaspy_location');
+$uabool = get_option('uaspy_uabool');
+$uatext = get_option('uaspy_show_text');
 
 function img($title, $code){
 	global $size, $url_img;
@@ -39,7 +43,7 @@ function img($title, $code){
 	}
 	//Set the img to display browser/os
 	//src=http://blogurl/plugins,etc/size/os-net/code.png
-	$var="<img src='".$url_img.$size.$code.".png' title='".$title."' border='0'>";
+	$var="<img src='".$url_img.$size.$code.".png' title='".$title."' style='border:0px;'>";
 	return $var;
 }
 
@@ -89,6 +93,10 @@ function detect_mozillas(){
 		$link="http://lobobrowser.org/";
 		$title="Lobo";
 		$code.="lobo";
+	}elseif (preg_match('/Safari/i', $useragent)){
+		$link="http://www.apple.com/safari/";
+		$title="Safari";
+		$code.="safari";
 	}elseif (preg_match('/MSIE/', $useragent)){
 		detect_ies();
 	}else{
@@ -106,7 +114,7 @@ function detect_ies(){
 		//TO-DO: Detect Internet Explorer different versions and make fun of the user...
 }
 
-function detect_webbrowser($useragent){
+function detect_webbrowser(){
 	global $useragent, $link, $title, $code, $img;
 	$code = "/net/";
 	//"/expression/i" » 'i' case insensitive mode
@@ -122,10 +130,6 @@ function detect_webbrowser($useragent){
 		$link="http://konqueror.kde.org";
 		$title="Konqueror";
 		$code.="konqueror";
-	}elseif (preg_match('/Safari/i', $useragent)){
-		$link="http://www.apple.com/safari/";
-		$title="Safari";
-		$code.="safari";
 	}elseif(preg_match('/Opera/i', $useragent)){
 		$link="http://opera.com";
 		$title="Opera";
@@ -159,12 +163,20 @@ function detect_webbrowser($useragent){
 		$code.="null";
 	}
 	$img=img($title, $code);
-	$ret = $img." <a href='".$link."' target='_blank' title='".$title."'>".$title."</a>";
+	global $uatext;
+	switch ($uatext){
+		case 1; //true
+			$ret = $img." <a href='".$link."' target='_blank' title='".$title."'>".$title."</a>";
+			break;
+		case 0;
+			$ret = $img;
+			break;
+	}
 	return $ret;
 }
 
 function detect_os(){
-	global $useragent, $url_os, $url_img, $os, $code, $on, $surfing;
+	global $useragent, $url_os, $url_img, $os, $code, $on, $surfing, $uabool, $uatext;
 	$code = "/os/";
 	if (preg_match('/Windows/i', $useragent)){
 		$os = "Windows";
@@ -192,23 +204,10 @@ function detect_os(){
 		$code.="null";	
 	}
 	$img_os=img($os, $code);
-	if($surfing==""){
-		echo "Using ";
+	if($uatext==1){
+		return 	$img_os." ".$os;
 	}else{
-		echo $surfing." ";
-	}
-	echo detect_webbrowser($useragent)." ";
-	if($on==""){
-		echo " on ";
-	}else{
-		echo $on." ";
-	}
-	echo $img_os." ".$os;
-	/*Allow admin to check the User-Agent string*/
-	global $user_ID, $post, $comment;
-	get_currentuserinfo();
-	if (user_can_edit_post_comments($user_ID, $post->ID)) {
-		echo "<br/><small>".htmlspecialchars($comment->comment_agent)."</small>";
+		return 	$img_os;	
 	}
 }
 
@@ -256,24 +255,6 @@ function detect_distro(){
 	}
 }
 
-function useragent_spy(){
-	global $comment, $useragent, $location;
-	get_currentuserinfo();
-	$useragent= $comment->comment_agent;
-	if($location=="before"){
-		echo "<p>".detect_os($url_os, $url_img, $useragent);
-		uaspy_comment();
-		add_filter('comment_text', 'useragent_spy');	
-	}elseif($location=="after"){
-		uaspy_comment();
-		echo detect_os($url_os, $url_img, $useragent)."</p>";
-		add_filter('comment_text', 'useragent_spy');
-	}elseif($location=="custom"){
-		remove_filter('comment_text', 'useragent_spy');
-		echo detect_os($url_os, $url_img, $useragent);
-	}
-}
-
 function uaspy_comment(){
 	global $comment;
 	remove_filter('comment_text', 'useragent_spy');
@@ -281,11 +262,59 @@ function uaspy_comment(){
 	echo apply_filters('comment_text', $comment->comment_content);	
 }
 
-//Deprecated, use useragent_spy() instead
+function display_ua_string(){
+	global $user_ID, $post, $comment, $uabool;
+	get_currentuserinfo();
+	if($uabool=='true'){
+		echo "<br/><small>".htmlspecialchars($comment->comment_agent)."</small>";
+	}
+}
+
+//Master of the functions:
+function useragent_spy(){
+	global $comment, $useragent, $location;
+	get_currentuserinfo();
+	$useragent= $comment->comment_agent;
+	if($location=="before"){
+		display_useragentspy();
+		uaspy_comment();
+		add_filter('comment_text', 'useragent_spy');	
+	}elseif($location=="after"){
+		uaspy_comment();
+		display_useragentspy();
+		add_filter('comment_text', 'useragent_spy');
+	}
+	/*elseif($location=="custom"){
+		display_useragentspy();
+	}*/
+}
+
+//The one that prints the whole thing
+function display_useragentspy(){
+	global $uatext, $surfing, $on;
+	if($uatext==1){
+		if($surfing==""){echo "Using ";}
+		else{echo $surfing." ";}
+	}	
+	echo detect_webbrowser()." ";
+	if($uatext==1){
+		if($on==""){
+			echo " on ";
+		}else{
+			echo " ".$on." ";
+		}
+	}
+	echo detect_os();
+	display_ua_string();
+}
+
 function useragent_spy_custom(){
 	global $location;
 	if($location=="custom"){
-		useragent_spy();
+		global $comment, $useragent, $location;
+		get_currentuserinfo();
+		$useragent= $comment->comment_agent;
+		display_useragentspy();
 	}
 }
 
@@ -294,6 +323,7 @@ function add_option_page(){
 }
 
 add_action('admin_head', 'add_option_page');
-add_filter('comment_text', 'useragent_spy');
-
+if ($location!='custom'){
+	add_filter('comment_text', 'useragent_spy');
+}
 ?>
