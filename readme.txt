@@ -3,8 +3,8 @@ Contributors: fernandobt
 Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_en/
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
-Tested up to: 2.6
-Stable tag: 0.5.1
+Tested up to: 2.6.1
+Stable tag: 0.5.2
 
 == Description ==
 
@@ -48,6 +48,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
     * Published under GPLv3.
 
 == Release Notes ==
+
+0.5.2
+* Fixed bug for automatic update installation where it deleted the images directory
+* Renamed variables, they were pretty generic so they could conflict with others.
 
 0.5.1
 * Added Google Chrome (the day of its release!)
@@ -103,8 +107,3 @@ TO-DO:
 * Browser versions.
 * Links for Operative Systems.
 Roadmap: 
-  0.5 
-    * Browser Versions
-    * O.S. Version (Windows)
-  0.6
-    * Links for O.S.

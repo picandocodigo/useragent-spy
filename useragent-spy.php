@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 0.5.1
+Version: 0.5.2
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -29,21 +29,21 @@ $url_img=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/";
 $url_os=get_option('siteurl')."/wp-content/plugins/useragent-spy/img/os/";
 
 //Plugin Options
-$size = get_option('uaspy_size'); //Image size
+$uasize = get_option('uaspy_size'); //Image size
 $surfing = get_option('uaspy_surfing'); //Word for "Using"
 $on=get_option('uaspy_on'); //Word for "on" 
-$location = get_option('uaspy_location');
+$ualocation = get_option('uaspy_location');
 $uabool = get_option('uaspy_uabool');
 $uatext = get_option('uaspy_show_text');
 
 function img($title, $code){
-	global $size, $url_img;
-	if($size==""){
-		$size=16;
+	global $uasize, $url_img;
+	if($uasize==""){
+		$uasize=16;
 	}
 	//Set the img to display browser/os
 	//src=http://blogurl/plugins,etc/size/os-net/code.png
-	$var="<img src='".$url_img.$size.$code.".png' title='".$title."' style='border:0px;'>";
+	$var="<img src='".$url_img.$uasize.$code.".png' title='".$title."' style='border:0px;'>";
 	return $var;
 }
 
@@ -276,19 +276,19 @@ function display_ua_string(){
 
 //Master of the functions:
 function useragent_spy(){
-	global $comment, $useragent, $location;
+	global $comment, $useragent, $ualocation;
 	get_currentuserinfo();
 	$useragent= $comment->comment_agent;
-	if($location=="before"){
+	if($ualocation=="before"){
 		display_useragentspy();
 		uaspy_comment();
 		add_filter('comment_text', 'useragent_spy');	
-	}elseif($location=="after"){
+	}elseif($ualocation=="after"){
 		uaspy_comment();
 		display_useragentspy();
 		add_filter('comment_text', 'useragent_spy');
 	}
-	/*elseif($location=="custom"){
+	/*elseif($ualocation=="custom"){
 		display_useragentspy();
 	}*/
 }
@@ -313,9 +313,9 @@ function display_useragentspy(){
 }
 
 function useragent_spy_custom(){
-	global $location;
-	if($location=="custom"){
-		global $comment, $useragent, $location;
+	global $ualocation;
+	if($ualocation=="custom"){
+		global $comment, $useragent, $ualocation;
 		get_currentuserinfo();
 		$useragent= $comment->comment_agent;
 		display_useragentspy();
@@ -327,7 +327,7 @@ function add_option_page(){
 }
 
 add_action('admin_head', 'add_option_page');
-if ($location!='custom'){
+if ($ualocation!='custom'){
 	add_filter('comment_text', 'useragent_spy');
 }
 ?>
