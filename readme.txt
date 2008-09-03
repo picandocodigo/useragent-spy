@@ -48,6 +48,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
     * Published under GPLv3.
 
 == Release Notes ==
+
+0.5.1
+* Added Google Chrome (the day of its release!)
+
 0.5
 * Option to show complete useragent string.
 * Went back to useragent_spy_custom() for custom display.
