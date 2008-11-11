@@ -49,6 +49,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 
 == Release Notes ==
 
+0.5.3
+* Fixed bug where Google Chrome was detected when 'chrome' was in the UserAgent string.
+* Added IE version detection by Albertux (http://albertux.ayalasoft.com/)
+
 0.5.2
 * Fixed bug for automatic update installation where it deleted the images directory
 * Renamed variables, they were pretty generic so they could conflict with others.

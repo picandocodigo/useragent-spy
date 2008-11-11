@@ -53,10 +53,6 @@ function detect_mozillas(){
 		$link="http://gnome.org/projects/epiphany/";
 		$title="Epiphany";
 		$code.="epiphany";
-	}if(preg_match('/Chrome/i', $useragent)){
-		$link="http://google.com/chrome/";
-		$title="Google Chrome";
-		$code.="chrome";
 	}elseif(preg_match('/Camino/i', $useragent)){
 		$link="http://caminobrowser.org/";
 		$title="Camino";
@@ -101,6 +97,10 @@ function detect_mozillas(){
 		$link="http://www.apple.com/safari/";
 		$title="Safari";
 		$code.="safari";
+	}if(preg_match('/Chrome/', $useragent)){
+		$link="http://google.com/chrome/";
+		$title="Google Chrome";
+		$code.="chrome";
 	}elseif (preg_match('/MSIE/', $useragent)){
 		detect_ies();
 	}else{
@@ -116,6 +116,20 @@ function detect_ies(){
 		$title="Internet Explorer";
 		$code.="ie";
 		//TO-DO: Detect Internet Explorer different versions and make fun of the user...
+		if (preg_match('/MSIE 5.5/i',$useragent)) {
+		  $version = '5.5';
+		} elseif (preg_match('/MSIE 6.0/i',$useragent)) {
+		  $version ='6.0';
+		} elseif (preg_match('/MSIE 7.0/i',$useragent)) {
+		  $version ='7.0';
+		} elseif (preg_match('/MSIE 8.0/i',$useragent)) {
+		  $version ='8.0';
+		} else {
+		  $version ='5.0 or less';
+		}
+		$title.=' '.$version;
+}
+
 }
 
 function detect_webbrowser(){
