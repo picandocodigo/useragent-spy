@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.6.3
-Stable tag: 0.5.3
+Stable tag: 0.5.3.1
 
 == Description ==
 
@@ -12,7 +12,7 @@ UserAgent-Spy is a WordPress plugin which displays the user's Operative System a
 
 I’m adding new stuff and changing the code frequently. Your feedback is very important, new features have been added by request, so if there’s something you would like to see in UA-Spy, leave a comment, and I’ll see what I can do.
 
-UserAgent Spy was written with Geany - http://geany.uvena.de/ and Emacs
+UserAgent Spy was written with Geany - http://geany.uvena.de/ and Emacs.
 Images created with The Gimp - http://www.gimp.org/
 
 == Installation ==
@@ -48,6 +48,9 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
     * Published under GPLv3.
 
 == Release Notes ==
+
+0.5.3.1
+* Fixed dumb bug which broke the whole plugin. Thanks to webmaster@illi.com.
 
 0.5.3
 * Fixed bug where Google Chrome was detected when 'chrome' was in the UserAgent string.
