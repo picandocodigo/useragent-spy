@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 0.5.3.1
+Version: 0.5.3.2
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -97,7 +97,7 @@ function detect_mozillas(){
 		$link="http://www.apple.com/safari/";
 		$title="Safari";
 		$code.="safari";
-	}if(preg_match('/Chrome/', $useragent)){
+	}elseif(preg_match('/Chrome/', $useragent)){
 		$link="http://google.com/chrome/";
 		$title="Google Chrome";
 		$code.="chrome";
@@ -115,7 +115,6 @@ function detect_ies(){
 		$link="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx";
 		$title="Internet Explorer";
 		$code.="ie";
-		//TO-DO: Detect Internet Explorer different versions and make fun of the user...
 		if (preg_match('/MSIE 5.5/i',$useragent)) {
 		  $version = '5.5';
 		} elseif (preg_match('/MSIE 6.0/i',$useragent)) {
