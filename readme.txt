@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.6.3
-Stable tag: 0.5.3.2
+Stable tag: 0.5.4
 
 == Description ==
 
@@ -48,6 +48,12 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
     * Published under GPLv3.
 
 == Release Notes ==
+0.5.4
+* Added Gran Paradiso.
+* Added Zenwalk GNU/Linux.
+* Fixed missing iPhone image on 24x24, added new cool one.
+* Finally fixed (hopefully) Google Chrome's detection bug. Unhappy word to use, "chrome"...
+
 0.5.3.2
 * Fixed even dumber bug, caused by the rush of getting last bug fixed...
 
@@ -115,4 +121,3 @@ TO-DO:
 * New browsers/os's are welcome.
 * Browser versions.
 * Links for Operative Systems.
-Roadmap: 

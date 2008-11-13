@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 0.5.3.2
+Version: 0.5.4
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -53,6 +53,14 @@ function detect_mozillas(){
 		$link="http://gnome.org/projects/epiphany/";
 		$title="Epiphany";
 		$code.="epiphany";
+	}elseif(preg_match('/Chrome/', $useragent)){
+		$link="http://google.com/chrome/";
+		$title="Google Chrome";
+		$code.="chrome";
+	}elseif(preg_match('/GranParadiso/i', $useragent)){
+	  $link ="http://mozilla.org";
+	  $title="Gran Paradiso";
+	  $code.="paradiso";
 	}elseif(preg_match('/Camino/i', $useragent)){
 		$link="http://caminobrowser.org/";
 		$title="Camino";
@@ -97,10 +105,6 @@ function detect_mozillas(){
 		$link="http://www.apple.com/safari/";
 		$title="Safari";
 		$code.="safari";
-	}elseif(preg_match('/Chrome/', $useragent)){
-		$link="http://google.com/chrome/";
-		$title="Google Chrome";
-		$code.="chrome";
 	}elseif (preg_match('/MSIE/', $useragent)){
 		detect_ies();
 	}else{
@@ -264,6 +268,10 @@ function detect_distro(){
 		$link="http://www.opensuse.org/";
 		$os="SuSE";
 		$code.="suse";
+	}elseif(preg_match('/Zenwalk/i', $useragent)){
+	  $link="http://www.zenwalk.org/";
+	  $os="Zenwalk GNU Linux";
+	  $code.="zenwalk";
 	}else{
 		$os="GNU/Linux";
 		$code.="linux";
