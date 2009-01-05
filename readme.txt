@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.6.3
-Stable tag: 0.5.4
+Stable tag: 0.6
 
 == Description ==
 
@@ -48,6 +48,13 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
     * Published under GPLv3.
 
 == Release Notes ==
+
+0.6
+* Added browser version detection.
+* Added Windows versions: Windows 7, Vista, XP, 2000, ME, NT 4, NT, 98, CE - Dedicated to www.elfrancotirador.cl
+* Rewrote IE version detection (sorry Albertux :P ).
+* Added browsers: Kazehakase, Sleipnir.
+
 0.5.4
 * Added Gran Paradiso.
 * Added Zenwalk GNU/Linux.
