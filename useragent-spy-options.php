@@ -2,27 +2,37 @@
 <form method="post" action="options.php">
 	<?php 
 		wp_nonce_field('update-options');
-		$size = get_option('uaspy_size');
+		$uasize = get_option('uaspy_size');
 		$location = get_option('uaspy_location');
 		$surfing=get_option('uaspy_surfing');
 		$on=get_option('uaspy_on');
 		$uabool=get_option('uaspy_uabool');
 		$uatext = get_option('uaspy_show_text');
+        $uatracksize = get_option('uaspy_track_size');
 	?>
 			<table>
 				<tr>
-					<td><strong>Browser/OS Icon Size:</strong>
+					<td><strong>Browser/OS icon size in comments:</strong>
 					</td>
 					<td><select name="uaspy_size">
-							<!-- To-do: Add "if" so actual value is selected when updating-->
-							<option value="24" text="24" <?php if($size==24) echo 'selected="selected"' ?>>24</option>
-							<option value="16" text="16" <?php if($size==16) echo 'selected="selected"' ?>>16</option>
+							<option value="24" text="24" <?php if($uasize==24) echo 'selected="selected"' ?>>24</option>
+							<option value="16" text="16" <?php if($uasize==16) echo 'selected="selected"' ?>>16</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
-					<td><strong>Text and icons, or icons only:</strong>
+					<td><strong>Icon size in trackbacks:</strong>
 					</td>
+					<td><select name="uaspy_track_size">
+							<option value="24" text="24" <?php if($uatracksize==24) echo 'selected="selected"' ?>>24</option>
+							<option value="16" text="16" <?php if($uatracksize==16) echo 'selected="selected"' ?>>16</option>
+						</select>
+					</td>
+				</tr>
+		
+					  <tr>
+					  	<td><strong>Text and icons, or icons only:</strong>
+						</td>
 					<td>
 						<select name="uaspy_show_text">
 							<option value="1" text="Icons and text" <?php if($uatext==1) echo 'selected="selected"' ?>>Icons and text</option>
@@ -95,7 +105,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><small><strong>Usage:</strong> There are 3 options so far for you to display the commenter's Browser and O.S. with
+					<td colspan="2"><small><strong>UserSpy location usage:</strong> There are 3 options so far for you to display the commenter's Browser and O.S. with
 					UserAgent-Spy.<br />
 					<strong>1 - Before the comment text.</strong> User's WebBrowser and OS will be displayed before comment text.<br/>
 					<strong>2 - After the comment text.</strong>User's WebBrowser and OS will be displayed after comment text.<br/>
@@ -111,7 +121,7 @@
 				</tr>
 			</table>
 	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="page_options" value="uaspy_size, uaspy_location, uaspy_surfing, uaspy_on, uaspy_uabool, uaspy_show_text" />
+	<input type="hidden" name="page_options" value="uaspy_size, uaspy_location, uaspy_surfing, uaspy_on, uaspy_uabool, uaspy_show_text, uaspy_track_size" />
 	<p class="submit">
 		<input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
 	</p>

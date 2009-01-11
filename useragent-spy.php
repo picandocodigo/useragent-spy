@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 0.6
+Version: 0.7
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -34,15 +34,23 @@ $on=get_option('uaspy_on'); //Word for "on"
 $ualocation = get_option('uaspy_location');
 $uabool = get_option('uaspy_uabool');
 $uatext = get_option('uaspy_show_text');
+$uatracksize = get_option('uaspy_track_size'); //Image size for trackbacks
 
 function img($title, $code){
-	global $uasize, $url_img;
+  global $uasize, $url_img, $uatracksize,$uaspy_trackback;
 	if($uasize==""){
 		$uasize=16;
 	}
+	if($uatracksize==""){
+	  $uatracksize=16;
+	}
 	//Set the img to display browser/os
 	//src=http://blogurl/plugins,etc/size/os-net/code.png
-	$var="<img src='".$url_img.$uasize.$code.".png' title='".$title."' style='border:0px;' alt='".$title."'/>";
+	if($uaspy_trackback==1){
+	  $var="<img src='".$url_img.$uatracksize.$code.".png' title='".$title."' style='border:0px;' alt='".$title."'/>";
+	}else{
+	  $var="<img src='".$url_img.$uasize.$code.".png' title='".$title."' style='border:0px;' alt='".$title."'/>";
+	}
 	return $var;
 }
 
@@ -63,6 +71,11 @@ function detect_mozillas(){
 	  $title="Gran Paradiso";
 	  $code.="paradiso";
 	  $version=$regmatch[1];
+	}elseif(preg_match('#Shiretoko([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+          $link ="http://mozilla.org";
+          $title="Shiretoko";
+          $code.="paradiso";
+          $version=$regmatch[1];
 	}elseif(preg_match('#Camino/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
 		$link="http://caminobrowser.org/";
 		$title="Camino";
@@ -130,6 +143,38 @@ function detect_mozillas(){
 	$title.=" ".$version;
 }
 
+function detect_trackbacks(){
+  global $useragent, $code, $link, $title, $img, $uaspy_trackback;
+  if(preg_match('#WordPress/([.0-9a-zA-Z]+)#i',$useragent,$regmatch)){
+		$link="http://wordpress.org";
+		$title="WordPress";
+		$code.="wordpress";
+		$version=$regmatch[1];
+		$uaspy_trackback=1;
+	}elseif (preg_match('/Feedburner/i',$useragent,$regmatch)){
+		$link="http://feedburner.com";
+		$title="FeedBurner";
+		$code.="wordpress";
+		$version="";
+		$uaspy_trackback=1;
+	}elseif (preg_match('#pligg#i',$useragent,$regmatch)){
+		  $link="http://pligg.com";
+		  $title="Pligg";
+		  $code.="pligg";
+		  $version="";
+		  $uaspy_trackback=1;
+  }elseif (preg_match('#meneame#i', $useragent, $regmatch)){
+		$link="http://meneame.net";
+		$title="Meneame";
+		$code.="meneame";
+		$uaspy_trackback=1;
+	}else{
+  		$uaspy_trackback=0;
+	}
+  	$title.=" ".$version;
+	return $uaspy_trackback;
+}
+
 function detect_ies(){
 		global $useragent, $code, $link, $title, $img;
 		$link="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx";
@@ -142,7 +187,8 @@ function detect_ies(){
 }
 
 function detect_webbrowser(){
-	global $useragent, $link, $title, $code, $img;
+  global $useragent, $link, $title, $code, $img, $uaspy_trackback;
+  $uaspy_trackback=0;
 	$code = "/net/";
 	//"/expression/i" » 'i' case insensitive mode
 	if (preg_match('#Arora/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
@@ -187,12 +233,12 @@ function detect_webbrowser(){
 		$link="http://www.maxthon.com/";
 		$title="Maxthon";
 		$code.="maxthon";
-        }elseif(preg_match('#Kazehakase/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
-	  $link="http://kazehakase.sourceforge.jp/";
-	  $title="Kazehakase";
-	  $code.="kazehakase";
-	  $version=$regmatch[1];
-        }elseif(preg_match('#Sleipnir/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
+	}elseif(preg_match('#Kazehakase/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
+		$link="http://kazehakase.sourceforge.jp/";
+		$title="Kazehakase";
+		$code.="kazehakase";
+		$version=$regmatch[1];
+	}elseif(preg_match('#Sleipnir/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
           $link="http://www.fenrir-inc.com/other/sleipnir/";
           $title="Sleipnir";
           $code.="sleipnir";
@@ -200,60 +246,61 @@ function detect_webbrowser(){
 	}elseif(preg_match('/Mozilla/i', $useragent)){
 		detect_mozillas($useragent);
 	}else{
+	  if(detect_trackbacks()!=1){
 		$link="#";
-		$title="Unidentified browser (yet)";
+		$title="Unknown";
 		$code.="null";
 		$version="";
+	  }
 	}
 	$title.=" ".$version;
 	$img=img($title, $code);
 	global $uatext;
 	switch ($uatext){
-		case 1; //true
-			$ret = $img." <a href='".$link."' target='_blank' title='".$title."'>".$title."</a>";
-			break;
-		case 0;
-			$ret = $img;
-			break;
+	case 1; //true
+		$ret = $img." <a href='".$link."' target='_blank' title='".$title."'>".$title."</a>";
+		break;
+	case 0;
+		$ret = $img;
+		break;
 	}
 	return $ret;
 }
 
 function detect_os(){
-	global $useragent, $url_os, $url_img, $os, $code, $on, $surfing, $uabool, $uatext;
+  global $useragent, $url_os, $url_img, $os, $code, $on, $surfing, $uabool, $uatext, $uaspy_os;
 	$code = "/os/";
-	if (preg_match('#(Windows|Win) ([a-zA-Z0-9.\ ]+)#i', $useragent, $regmatch)){
-		$os = "Windows";
-		$code.="win";
-		detect_win($regmatch[0]);
-	}elseif (preg_match('/iPhone/i', $useragent)){
-		//$link="http://apple.com/iphone";
-		$os="iPhone";
-		$code.="iphone";
-	}elseif (preg_match('/Mac/i', $useragent)){
-		$os="Mac OS";
-		$code.="mac";
-	}elseif (preg_match('/Linux/i', $useragent)){
-		detect_distro();
-	}elseif (preg_match('/FreeBSD/i', $useragent)){
-		$os="FreeBSD";
-		$code.="freebsd";
-	}elseif (preg_match('/OpenBSD/i', $useragent)){
-		$os="OpenBSD";
-		$code.="openbsd";
-	}elseif (preg_match('/Solaris/i', $useragent)){
-		$os="Solaris";
-		$code.="solaris";
-	}else{
-		$os="Unknown O.S.";
-		$code.="null";	
-	}
-	$img_os=img($os, $code);
-	if($uatext==1){
-		return 	$img_os." ".$os;
-	}else{
-		return 	$img_os;	
-	}
+	  if (preg_match('#(Windows|Win) ([a-zA-Z0-9.\ ]+)#i', $useragent, $regmatch)){
+	    $os = "Windows";
+	    $code.="win";
+	    detect_win($regmatch[0]);
+	  }elseif (preg_match('/iPhone/i', $useragent)){
+	    $os="iPhone";
+	    $code.="iphone";
+	  }elseif (preg_match('/Mac/i', $useragent)){
+	    $os="Mac OS";
+	    $code.="mac";
+	  }elseif (preg_match('/Linux/i', $useragent)){
+	    detect_distro();
+	  }elseif (preg_match('/FreeBSD/i', $useragent)){
+	    $os="FreeBSD";
+	    $code.="freebsd";
+	  }elseif (preg_match('/OpenBSD/i', $useragent)){
+	    $os="OpenBSD";
+	    $code.="openbsd";
+	  }elseif (preg_match('/Solaris/i', $useragent)){
+	    $os="Solaris";
+	    $code.="solaris";
+	  }else{
+	    $os="Unknown O.S.";
+	    $code.="null";	
+	  }
+	  $img_os=img($os, $code);
+	  if($uatext==1){
+	    return $img_os." ".$os;
+	  }else{
+	    return $img_os;	
+	  }
 }
 
 function detect_win($ver_match){
@@ -366,20 +413,17 @@ function useragent_spy(){
 
 //The one that prints the whole thing
 function display_useragentspy(){
-	global $uatext, $surfing, $on;
+  global $uatext, $surfing, $on, $uaspy_trackback;
 	if($uatext==1){
-		if($surfing==""){echo "Using ";}
-		else{echo $surfing." ";}
+	  echo $surfing." ";
 	}	
 	echo detect_webbrowser()." ";
-	if($uatext==1){
-		if($on==""){
-			echo " on ";
-		}else{
-			echo " ".$on." ";
-		}
-	}
+	if($uaspy_trackback!=1){
+	  if($uatext==1){
+		echo " ".$on." ";
+	  }
 	echo detect_os();
+	}
 	display_ua_string();
 }
 
@@ -397,7 +441,8 @@ function add_option_page(){
 	add_options_page('UserAgent Spy', 'UserAgent Spy', 'manage_options','useragent-spy/useragent-spy-options.php');
 }
 
-add_action('admin_head', 'add_option_page');
+
+add_action('admin_menu', 'add_option_page');
 if ($ualocation!='custom'){
 	add_filter('comment_text', 'useragent_spy');
 }
