@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 1.0rc1
+Version: 1.0rc2
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -52,6 +52,18 @@ function detect_webbrowser(){
         $title="Amaya";
         $code.="amaya";
         $version=$regmatch[1];
+    }elseif (preg_match('#Safari/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.apple.com/safari/";
+        $title="Safari";
+        $code.="safari";
+        $version=$regmatch[1];
+    }elseif (preg_match('/MSIE/', $useragent)){
+        $link="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx";
+        $title="Internet Explorer";
+        $code.="ie";
+        if (preg_match('/MSIE ([.0-9]+)/i',$useragent, $regmatch)) {
+            $version = $regmatch[1];
+        }
     }elseif (preg_match('#Konqueror/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://konqueror.kde.org";
         $title="Konqueror";
@@ -95,10 +107,19 @@ function detect_webbrowser(){
         $title="Sleipnir";
         $code.="sleipnir";
         $version=$regmatch[1];
+    }elseif(preg_match('/midori/i', $useragent)){
+      $link="http://www.twotoasts.de/index.php?/pages/midori_summary.html";
+      $title="Midori";
+      $code.="midori";    
     }elseif(preg_match('#Chrome/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://google.com/chrome/";
         $title="Google Chrome";
         $code.="chrome";
+        $version=$regmatch[1];
+    }elseif(preg_match('#Fennec/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link ="https://wiki.mozilla.org/Fennec";
+        $title="Fennec";
+        $code.="fennec";
         $version=$regmatch[1];
     }elseif(preg_match('#GranParadiso/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link ="http://mozilla.org";
@@ -130,6 +151,11 @@ function detect_webbrowser(){
         $title="SeaMonkey";
         $code.="seamonkey";
         $version=$regmatch[1];
+    }elseif (preg_match('#Swiftfox#i', $useragent)){
+        $link="http://mozilla.org";
+        $title="Firefox";
+        $code.="firefox";
+        $version=$regmatch[1];
     }elseif (preg_match('#Firefox/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://mozilla.org";
         $title="Firefox";
@@ -160,18 +186,24 @@ function detect_webbrowser(){
         $title="Lobo";
         $code.="lobo";
         $version=$regmatch[1];
-    }elseif (preg_match('#Safari/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
-        $link="http://www.apple.com/safari/";
-        $title="Safari";
-        $code.="safari";
+    }elseif (preg_match('#K-Meleon/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://kmeleon.sourceforge.net/";
+        $title="K-Meleon";
+        $code.="kmeleon";
         $version=$regmatch[1];
-    }elseif (preg_match('/MSIE/', $useragent)){
-        $link="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx";
-        $title="Internet Explorer";
-        $code.="ie";
-        if (preg_match('/MSIE ([.0-9]+)/i',$useragent, $regmatch)) {
-            $version = $regmatch[1];
-        }
+    }elseif (preg_match('/Shiira/i', $useragent)){
+        $link="http://shiira.jp/en.php";
+        $title="Shiira";
+        $code.="shiira";
+   }elseif (preg_match('#Sunrise/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.sunrisebrowser.com/";
+        $title="Sunrise";
+        $code.="sunrise";
+        $version=$regmatch[1];
+   }elseif (preg_match('#Wyzo/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.wyzo.com/";
+        $title="Wyzo";
+        $code.="wyzo";
     }elseif(preg_match('#Mozilla/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
         $link="http://mozilla.org";
         $title="Mozilla Compatible";

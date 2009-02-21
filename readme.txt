@@ -50,6 +50,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 
 == Release Notes ==
 
+**1.0rc2**
+
+* Added web browsers: Fennec, Swiftfox, K-Meleon, Shiira, Midori, Sunrise, Wyzo.
+
 **1.0rc1**
 
 * Rewrote entire code. Now easier to manage and add new stuff. Focused on adding devices detection such as cellphones and other internet-able platforms. Code is way more efficient, I think...
