@@ -3,8 +3,8 @@ Contributors: fernandobt
 Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_en/
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
-Tested up to: 2.6.5
-Stable tag: 1.0rc1
+Tested up to: 2.7.1
+Stable tag: 1.0rc2
 
 == Description ==
 
@@ -52,11 +52,13 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 
 **1.0rc2**
 
-* Added web browsers: Fennec, Swiftfox, K-Meleon, Shiira, Midori, Sunrise, Wyzo.
+* Added web browsers: Fennec, Swiftfox, K-Meleon, Shiira, Midori, Sunrise, Wyzo, Songbird, Dillo, Omniweb.
 
 **1.0rc1**
 
 * Rewrote entire code. Now easier to manage and add new stuff. Focused on adding devices detection such as cellphones and other internet-able platforms. Code is way more efficient, I think...
+
+* Fixed options page for WordPress 2.7 (register options and stuff)
 
 * Added CentOs operative system.
 
@@ -197,6 +199,5 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 * Detects Windows, GNU/Linux, iPhone and MacOS 
 
 TO-DO:
-* Allow users to modify links for each browser/OS.
 * New browsers/os's are welcome.
 * Links for Operative Systems.

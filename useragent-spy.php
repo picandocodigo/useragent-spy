@@ -52,11 +52,6 @@ function detect_webbrowser(){
         $title="Amaya";
         $code.="amaya";
         $version=$regmatch[1];
-    }elseif (preg_match('#Safari/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
-        $link="http://www.apple.com/safari/";
-        $title="Safari";
-        $code.="safari";
-        $version=$regmatch[1];
     }elseif (preg_match('/MSIE/', $useragent)){
         $link="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx";
         $title="Internet Explorer";
@@ -93,6 +88,11 @@ function detect_webbrowser(){
         $link="http://www.netsurf-browser.org/";
         $title="NetSurf";
         $code.="netsurf";
+    }elseif(preg_match('#Dillo/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.dillo.org/";
+        $title="Dillo";
+        $code.="dillo";
+        $version=$regmatch[1];
     }elseif(preg_match('/Maxthon/i', $useragent)){
         $link="http://www.maxthon.com/";
         $title="Maxthon";
@@ -151,15 +151,25 @@ function detect_webbrowser(){
         $title="SeaMonkey";
         $code.="seamonkey";
         $version=$regmatch[1];
+    }elseif (preg_match('#Wyzo/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.wyzo.com/";
+        $title="Wyzo";
+        $code.="wyzo";
+        $version=$regmatch[1];
     }elseif (preg_match('#Swiftfox#i', $useragent)){
-        $link="http://mozilla.org";
-        $title="Firefox";
-        $code.="firefox";
+        $link="http://getswiftfox.com/";
+        $title="Swiftfox";
+        $code.="Swiftfox";
         $version=$regmatch[1];
     }elseif (preg_match('#Firefox/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://mozilla.org";
         $title="Firefox";
         $code.="firefox";
+        $version=$regmatch[1];
+    }elseif (preg_match('#Songbird/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://getsongbird.com/";
+        $title="Songbird";
+        $code.="songbird";
         $version=$regmatch[1];
     }elseif (preg_match('#IceWeasel/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://geticeweasel.org";
@@ -200,10 +210,16 @@ function detect_webbrowser(){
         $title="Sunrise";
         $code.="sunrise";
         $version=$regmatch[1];
-   }elseif (preg_match('#Wyzo/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
-        $link="http://www.wyzo.com/";
-        $title="Wyzo";
-        $code.="wyzo";
+    }elseif (preg_match('#Omniweb/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.omnigroup.com/applications/omniweb/";
+        $title="OmniWeb";
+        $code.="omniweb";
+        $version=$regmatch[1];
+    }elseif (preg_match('#Safari/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.apple.com/safari/";
+        $title="Safari";
+        $code.="safari";
+        $version=$regmatch[1];
     }elseif(preg_match('#Mozilla/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
         $link="http://mozilla.org";
         $title="Mozilla Compatible";
