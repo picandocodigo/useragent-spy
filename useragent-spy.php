@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 1.0rc2
+Version: 1.0
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -51,6 +51,11 @@ function detect_webbrowser(){
         $link="http://www.w3.org/Amaya/";
         $title="Amaya";
         $code.="amaya";
+        $version=$regmatch[1];
+    }elseif (preg_match('#K-Meleon([/.0-9a-zA-Z]+)?#i', $useragent,$regmatch)){
+        $link="http://kmeleon.sourceforge.net/";
+        $title="K-Meleon";
+        $code.="kmeleon";
         $version=$regmatch[1];
     }elseif (preg_match('/MSIE/', $useragent)){
         $link="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx";
@@ -126,7 +131,7 @@ function detect_webbrowser(){
         $title="Gran Paradiso";
         $code.="paradiso";
         $version=$regmatch[1];
-    }elseif(preg_match('#Shiretoko([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+    }elseif(preg_match('#Shiretoko/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link ="http://mozilla.org";
         $title="Shiretoko";
         $code.="paradiso";
@@ -140,6 +145,11 @@ function detect_webbrowser(){
         $link="http://www.mozilla.org/projects/minefield/";
         $title="Minefield";
         $code.="minefield";
+        $version=$regmatch[1];
+    }elseif(preg_match('#BonEcho/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+        $link="http://www.mozilla.org/projects/bonecho/";
+        $title="BonEcho";
+        $code.="paradiso";
         $version=$regmatch[1];
     }elseif(preg_match('#Iceape/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://packages.debian.org/iceape";
@@ -195,11 +205,6 @@ function detect_webbrowser(){
         $link="http://lobobrowser.org/";
         $title="Lobo";
         $code.="lobo";
-        $version=$regmatch[1];
-    }elseif (preg_match('#K-Meleon/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
-        $link="http://kmeleon.sourceforge.net/";
-        $title="K-Meleon";
-        $code.="kmeleon";
         $version=$regmatch[1];
     }elseif (preg_match('/Shiira/i', $useragent)){
         $link="http://shiira.jp/en.php";
@@ -396,15 +401,15 @@ function detect_win($ver_match){
     $os.=" ME";
   }elseif (preg_match('/NT4.0/i',$ver_match)){
     $os.=" NT 4";
-  }elseif (preg_match('/NT/i',$ver_match)){
-    $os.=" NT";
   }elseif (preg_match('/Win98/i',$ver_match)){
     $os.=" 98";
   }elseif (preg_match('/CE/i',$ver_match)){
     $os.=" CE";
     $uaspy_device = true;
-  }elseif (preg_match('/NT 6.1/i',$ver_match)){
+  }elseif (preg_match('/NT 6.1|NT 7.0/i',$ver_match)){
     $os.=" 7";
+  }elseif (preg_match('/NT/i',$ver_match)){
+    $os.=" NT";
   }else{
     $os.=" Unknown";
   }
@@ -495,7 +500,7 @@ function useragent_spy_custom(){
 		display_useragentspy();
 	}
 }
-//Utilitary functions for filters and stuff.
+//Util functions for filters and stuff.
 function uaspy_comment(){
 	global $comment;
 	remove_filter('comment_text', 'useragent_spy');

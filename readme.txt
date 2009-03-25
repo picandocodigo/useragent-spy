@@ -4,13 +4,13 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 1.0rc2
+Stable tag: 1.0
 
 == Description ==
 
 UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
 
-The plugin was re-written on version 1.0rc1. That's release candidate 1. It's arrived to a point where it does everything I wanted it to do, and the code was arranged so that adding new browsers, operative systems and devices is much easier now. 
+The plugin was re-written on version 1.0rc1. It's arrived to a point where it does everything I wanted it to do, and the code was arranged so that adding new browsers, operative systems and devices is much easier now. 
 Your feedback is very important, new features have been added by request, so if there’s something you would like to see in UA-Spy, leave a comment, and I’ll see what I can do.
 
 UserAgent Spy was written with Emacs - http://www.gnu.org/software/emacs/
@@ -49,6 +49,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 * Published under GPLv3.
 
 == Release Notes ==
+
+**1.0**
+
+* Added BonEcho, fixed some minor stuff on code. Ready to release version 1.0!
 
 **1.0rc2**
 
