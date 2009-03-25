@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.7.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 == Description ==
 
@@ -49,6 +49,10 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 * Published under GPLv3.
 
 == Release Notes ==
+
+**1.0.1**
+
+* Fixed Swiftfox detection error, where image wouldn't be displayed.
 
 **1.0**
 
