@@ -3,8 +3,8 @@ Contributors: fernandobt
 Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_en/
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
-Tested up to: 2.7.1
-Stable tag: 1.0.1
+Tested up to: 2.8.4
+Stable tag: 1.0.2
 
 == Description ==
 
@@ -48,164 +48,146 @@ Some of you may compare this to another well-known plugin named browsersniff. Us
 * No basic knowledge of PHP or editing WordPress templates required
 * Published under GPLv3.
 
-== Release Notes ==
+== Frequently Asked Questions ==
 
-**1.0.1**
+No questions yet. Got any question?
+http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-en/
+
+
+== Screenshots ==
+
+
+
+== Change log ==
+
+= 1.0.2 =
+
+* Added laconica trackbacks and Venenux GNU/Linux detection.
+* Validated readme.txt
+
+= 1.0.1 =
 
 * Fixed Swiftfox detection error, where image wouldn't be displayed.
 
-**1.0**
+= 1.0 =
 
 * Added BonEcho, fixed some minor stuff on code. Ready to release version 1.0!
 
-**1.0rc2**
+= 1.0rc2 =
 
 * Added web browsers: Fennec, Swiftfox, K-Meleon, Shiira, Midori, Sunrise, Wyzo, Songbird, Dillo, Omniweb.
 
-**1.0rc1**
+= 1.0rc1 =
 
 * Rewrote entire code. Now easier to manage and add new stuff. Focused on adding devices detection such as cellphones and other internet-able platforms. Code is way more efficient, I think...
-
 * Fixed options page for WordPress 2.7 (register options and stuff)
-
 * Added CentOs operative system.
-
 * If all goes well, version 1.0 final will be released soon :D.
 
-**0.7.2**
+= 0.7.2 =
 
 * Added SymbianOS
 
-**0.7.1**
+= 0.7.1 =
 
 * Fixed some path bugs
-
 * Added null.png images for undetected OS 
 
-**0.7**
+= 0.7 =
 
 * Added trackback detection for WordPress, Pligg, Meneame, and some more. Some new options are included in the Admin page.
-
 * Fixed bug with OpenId plugin, thanks to Gonzalo (http://gon.sociallinux.org/)
 
-**0.6**
+= 0.6 =
 
 * Added browser version detection.
-
 * Added Windows versions: Windows 7, Vista, XP, 2000, ME, NT 4, NT, 98, CE - Dedicated to www.elfrancotirador.cl
-
 * Rewrote IE version detection (sorry Albertux :P ).
-
 * Added browsers: Kazehakase, Sleipnir.
 
-**0.5.4**
+= 0.5.4 =
 
 * Added Gran Paradiso.
-
 * Added Zenwalk GNU/Linux.
-
 * Fixed missing iPhone image on 24x24, added new cool one.
-
 * Finally fixed (hopefully) Google Chrome's detection bug. Unhappy word to use, "chrome"...
 
-**0.5.3.2**
+= 0.5.3.2 =
 
 * Fixed even dumber bug, caused by the rush of getting last bug fixed...
 
-**0.5.3.1**
+= 0.5.3.1 =
 
 * Fixed dumb bug which broke the whole plugin. Thanks to webmaster@illi.com.
 
-**0.5.3**
+= 0.5.3 =
 
 * Fixed bug where Google Chrome was detected when 'chrome' was in the UserAgent string.
-
 * Added IE version detection by Albertux (http://albertux.ayalasoft.com/)
 
 
-**0.5.2**
+= 0.5.2 =
 
 * Fixed bug for automatic update installation where it deleted the images directory
-
 * Renamed variables, they were pretty generic so they could conflict with others.
 
-
-**0.5.1**
+= 0.5.1 =
 
 * Added Google Chrome (the day of its release!)
 
-**0.5**
+= 0.5 =
 
 * Option to show complete useragent string.
-
 * Went back to useragent_spy_custom() for custom display.
-
 * Several code fixes (W3C valid XHTML, more order, etc).
-
 * Saved settings are displayed correctly on the settings page.
-
 * Added option to display icons only, with no text or link.
-
 * Fixed bugs: 
       -Epiphany, when built against WebKit would display Safari.
       -Major bug which would show ua-spy in your comment management page, instead of comment text when using custom.
 
-**0.4.2**
+= 0.4.2 =
 
 * Browser added: Lynx, Links.
-
 * Fixed bug where the comments would show without filters.
-
 * Changed Konqueror icon for new 4.0 version.
 
-**0.4.1**
+= 0.4.1 =
 
 * OS added: OLPC XO, SuSE.
-
 * Browser added: W3M, Lobo, Amaya, Maxthon, Camino, NetSurf, Minefield, IceApe, SeaMonkey.
-
 * Fixed some code (includes a bug where OLPC was detected for certain os's).
 
-**0.4**
+= 0.4 =
 
 * Made "browsing with" and "on" words in "Browsing with browser on OS" customizable in the Options page.
-
 * Allow logged in user to see the full user-agent string (easier debugging).
-
 * Fixed string for unidentified browser.
-
 * OS's added: FreeBSD, OpenBSD, Solaris.
 
-**0.3.1**
+= 0.3.1 =
 
 * Added <p> tags for correct formatting
-
 * Added if in options page so that current values are selected on load.
 
-**0.3**
+= 0.3 =
 
 * More web-browsers: Epiphany, Galeon, Opera, IE.
-
 * O.S.'s: Xubuntu, Kubuntu, Ubuntu, Slackware.
-
 * Added option to choose displaying useragent_spy before or after the comment text, or using useragent_spy() function in template.
 
-**0.2**
+= 0.2 =
 
 * Detects Firefox, Epiphany.
-
 * Detects Debian, Fedora, Gentoo, 
-
 * Options menu under Settings Panel, allows 16x16 or 24x24 pixel images for icon size.
-
 * Integrates into Wordpress before comments text.
 
-**0.1**
+= 0.1 =
 
 * Detects Mozilla, IceWeasel, IceCat, Arora, Safari, Konqueror.
-
 * Detects Windows, GNU/Linux, iPhone and MacOS 
 
-TO-DO:
+= TO-DO =
 * New browsers/os's are welcome.
 * Links for Operative Systems.
