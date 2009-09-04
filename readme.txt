@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.8.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 == Description ==
 
@@ -59,6 +59,12 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 
 
 == Change log ==
+
+= 1.0.3 =
+
+* Added: Android, Laconica new name.
+* Small fix
+
 
 = 1.0.2 =
 
