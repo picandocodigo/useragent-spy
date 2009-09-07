@@ -56,7 +56,7 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 
 == Screenshots ==
 
-
+1. Screenshot 1
 
 == Change log ==
 
