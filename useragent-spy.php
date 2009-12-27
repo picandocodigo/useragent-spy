@@ -181,11 +181,6 @@ function detect_webbrowser(){
         $title="Swiftfox";
         $code.="swiftfox";
         $version=$regmatch[1];
-    }elseif (preg_match('#Firefox/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
-        $link="http://mozilla.org";
-        $title="Firefox";
-        $code.="firefox";
-        $version=$regmatch[1];
     }elseif (preg_match('#Songbird/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://getsongbird.com/";
         $title="Songbird";
@@ -196,11 +191,16 @@ function detect_webbrowser(){
         $title="Debian IceWeasel";
         $code.="iceweasel";
         $version=$regmatch[1];
-    }elseif (preg_match('#IceCat/([.a-zA-Z0-9]+)#i', $useragent, $regmatch)){
-        $link="http://gnuzilla.gnu.org";
-        $title="GNU IceCat";
-        $code.="icecat";
-        $version=$regmatch[1];
+	}elseif (preg_match('#IceCat/([.a-zA-Z0-9]+)#i', $useragent, $regmatch)){
+		$link="http://gnuzilla.gnu.org";
+		$title="GNU IceCat";
+		$code.="icecat";
+		$version=$regmatch[1];
+	}elseif (preg_match('#Firefox/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
+		$link="http://mozilla.org";
+		$title="Firefox";
+		$code.="firefox";
+		$version=$regmatch[1];
     }elseif (preg_match('#Galeon/([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
         $link="http://galeon.sourceforge.net/";
         $title="Galeon";
