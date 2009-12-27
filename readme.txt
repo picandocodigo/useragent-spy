@@ -3,8 +3,8 @@ Contributors: fernandobt
 Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_en/
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
-Tested up to: 2.8.4
-Stable tag: 1.0.3
+Tested up to: 2.9
+Stable tag: 1.1
 
 == Description ==
 
@@ -59,6 +59,10 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 1. Screenshot 1
 
 == Change log ==
+
+= 1.1 =
+* Added: ArchLinux, Mandriva, DragonFly BSD, Edubuntu, MovableType, Nintendo DS, Playstation, Wii, Chrome OS.
+* Fixed bug, added pre 2.6 compatibility
 
 = 1.0.3 =
 
@@ -173,7 +177,7 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 
 = 0.3.1 =
 
-* Added <p> tags for correct formatting
+* Added p tags for correct formatting
 * Added if in options page so that current values are selected on load.
 
 = 0.3 =
