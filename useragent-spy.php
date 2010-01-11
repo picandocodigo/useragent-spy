@@ -3,7 +3,7 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 1.1
+Version: 1.1.1
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
@@ -358,23 +358,23 @@ function img($title, $code){
 
 //Detect GNU/Linux distros
 function detect_distro(){
-    global $useragent, $code, $url_os, $os, $link;
-    if(preg_match('/Debian/i', $useragent)){
-        $link="http://debian.org";
-        $os="Debian GNU/Linux";
-        $code.="debian";
-    }elseif(preg_match('/CentOs/', $useragent)){
-        $link="";
-        $os="CentOs";
-        $code.="centos";
-    }elseif(preg_match('/Gentoo/i', $useragent)){
-        $link="http://gentoo.org/";
-        $os="Gentoo";
-        $code.="gentoo";
-    }elseif(preg_match('/Fedora/i', $useragent)){
-        $link="htt[://fedoraproject.org//";
-        $os="Fedora";
-        $code.="fedora";
+	global $useragent, $code, $url_os, $os, $link;
+	if(preg_match('/Debian/i', $useragent)){
+		$link="http://debian.org";
+		$os="Debian GNU/Linux";
+		$code.="debian";
+	}elseif(preg_match('/CentOs/', $useragent)){
+		$link="";
+		$os="CentOs";
+		$code.="centos";
+	}elseif(preg_match('/Gentoo/i', $useragent)){
+		$link="http://gentoo.org/";
+		$os="Gentoo";
+		$code.="gentoo";
+	}elseif(preg_match('/Fedora/i', $useragent)){
+		$link="htt[://fedoraproject.org//";
+		$os="Fedora";
+		$code.="fedora";
 	}elseif(preg_match('/Xubuntu/i', $useragent)){
 		$link="http://xubuntu.org";
 		$os="Xubuntu";
@@ -399,6 +399,10 @@ function detect_distro(){
 		$link="http://www.mandriva.com/";
 		$title = "Mandriva";
 		$code.="mandriva";
+	}elseif(preg_match('/Mint/i', $useragent)){
+		$link="http://www.linuxmint.com/";
+		$title = "Linux Mint";
+		$code.="mint";
 	}elseif(preg_match('/Slackware/i', $useragent)){
 		$link="http://slackware.com/";
 		$os="Slackware";
@@ -408,54 +412,53 @@ function detect_distro(){
 		$os="OLPC (XO)";
 		$code.="olpc";
 	}elseif(preg_match('/Suse/i', $useragent)){
-        $link="http://www.opensuse.org/";
-        $os="SuSE";
-        $code.="suse";
-    }elseif(preg_match('/Zenwalk/i', $useragent)){
-        $link="http://www.zenwalk.org/";
-        $os="Zenwalk GNU Linux";
-        $code.="zenwalk";
-    }elseif(preg_match('/venenux/i', $useragent)){
-        $link="http://venenux.org/";
-        $os="Venenux GNU Linux";
-        $code.="venenux";
-    }elseif(preg_match('/Android/i', $useragent)){
-        $link="http://www.android.com/";
-        $title="Android";
-        $code.="android";
-    }else{
-        $os="GNU/Linux";
-        $code.="linux";
-    }
+		$link="http://www.opensuse.org/";
+		$os="SuSE";
+		$code.="suse";
+	}elseif(preg_match('/Zenwalk/i', $useragent)){
+		$link="http://www.zenwalk.org/";
+		$os="Zenwalk GNU Linux";
+		$code.="zenwalk";
+	}elseif(preg_match('/venenux/i', $useragent)){
+		$link="http://venenux.org/";
+		$os="Venenux GNU Linux";
+		$code.="venenux";
+	}elseif(preg_match('/Android/i', $useragent)){
+		$link="http://www.android.com/";
+		$title="Android";
+		$code.="android";
+	}else{
+		$os="GNU/Linux";
+		$code.="linux";
+	}
 }
 //Detect Windows Version:
 function detect_win($ver_match){
-  global $os, $uaspy_device;
-  if (preg_match('/NT 6.0/i',$ver_match)){
-    $os.=" Vista";
-  }elseif (preg_match('/NT 5.1/i',$ver_match)){
-    $os.=" XP";
-  }elseif (preg_match('/NT 5.0/i',$ver_match)){
-    $os.=" 2000";
-  }elseif (preg_match('/9x 4.90/i',$ver_match)){
-    $os.=" ME";
-  }elseif (preg_match('/NT4.0/i',$ver_match)){
-    $os.=" NT 4";
-  }elseif (preg_match('/Win98/i',$ver_match)){
-    $os.=" 98";
-  }elseif (preg_match('/CE/i',$ver_match)){
-    $os.=" CE";
-    $uaspy_device = true;
-  }elseif (preg_match('/NT 6.1|NT 7.0/i',$ver_match)){
-    $os.=" 7";
-  }elseif (preg_match('/NT/i',$ver_match)){
-    $os.=" NT";
-  }else{
-    $os.=" Unknown";
-  }
+	global $os, $uaspy_device;
+	if (preg_match('/NT 6.0/i',$ver_match)){
+		$os.=" Vista";
+	}elseif (preg_match('/NT 5.1/i',$ver_match)){
+		$os.=" XP";
+	}elseif (preg_match('/NT 5.0/i',$ver_match)){
+		$os.=" 2000";
+	}elseif (preg_match('/9x 4.90/i',$ver_match)){
+		$os.=" ME";
+	}elseif (preg_match('/NT4.0/i',$ver_match)){
+		$os.=" NT 4";
+	}elseif (preg_match('/Win98/i',$ver_match)){
+		$os.=" 98";
+	}elseif (preg_match('/CE/i',$ver_match)){
+		$os.=" CE";
+		$uaspy_device = true;
+	}elseif (preg_match('/NT 6.1|NT 7.0/i',$ver_match)){
+		$os.=" 7";
+	}elseif (preg_match('/NT/i',$ver_match)){
+		$os.=" NT";
+	}else{
+		$os.=" Unknown";
+	}
 }
 
-//Check if it works...
 function detect_trackback(){
 	global $useragent, $uaspy_trackback;
 	$uaspy_trackback =1;
@@ -493,23 +496,23 @@ function detect_trackback(){
 		$title="Unknown";
 		$code.="null";
 	}
-    $title.=" ".$version;
-    $img = img($title, $code);
-    switch ($uatext){
-        case 1; //true
-            $uasret = $img." <a href='".$link."' title='".$title."'>".$title."</a>";
-            break;
-        case 0;
-            $uasret = $img;
-            break;
-    }
-    return $uasret;
+	$title.=" ".$version;
+	$img = img($title, $code);
+	switch ($uatext){
+		case 1; //true
+			$uasret = $img." <a href='".$link."' title='".$title."'>".$title."</a>";
+			break;
+		case 0;
+			$uasret = $img;
+			break;
+	}
+	return $uasret;
 }
 
 //Main function
 function useragent_spy(){
 	global $comment, $useragent, $ualocation, $uaspy_trackback;
-        $uaspy_trackback =0;
+	$uaspy_trackback =0;
 	get_currentuserinfo();
 	$useragent = $comment->comment_agent;
 	if($ualocation=="before"){
@@ -532,7 +535,7 @@ function display_useragentspy(){
 	}else{
 		$uaspy = detect_webbrowser();
 		$uaspy .= detect_os();
-    }
+	}
 	if(empty($_POST['comment_post_ID'])){
 		echo $uaspy;
 	}

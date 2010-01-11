@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.9
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 == Description ==
 
@@ -13,7 +13,6 @@ UserAgent-Spy is a WordPress plugin which displays the user's Operative System a
 The plugin was re-written on version 1.0rc1. It's arrived to a point where it does everything I wanted it to do, and the code was arranged so that adding new browsers, operative systems and devices is much easier now. 
 Your feedback is very important, new features have been added by request, so if there’s something you would like to see in UA-Spy, leave a comment, and I’ll see what I can do.
 
-UserAgent Spy was written with Emacs - http://www.gnu.org/software/emacs/
 Images created with The Gimp - http://www.gimp.org/
 
 == Installation ==
@@ -59,6 +58,9 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 1. Screenshot 1
 
 == Change log ==
+
+= 1.1.1 =
+* Added Linux Mint.
 
 = 1.1 =
 * Added: ArchLinux, Mandriva, DragonFly BSD, Edubuntu, MovableType, Nintendo DS, Playstation, Wii, Chrome OS.
