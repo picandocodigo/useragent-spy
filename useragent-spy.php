@@ -372,7 +372,7 @@ function detect_distro(){
 		$os="Gentoo";
 		$code.="gentoo";
 	}elseif(preg_match('/Fedora/i', $useragent)){
-		$link="htt[://fedoraproject.org//";
+		$link="http://fedoraproject.org//";
 		$os="Fedora";
 		$code.="fedora";
 	}elseif(preg_match('/Xubuntu/i', $useragent)){
