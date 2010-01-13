@@ -60,7 +60,7 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 == Change log ==
 
 = 1.1.2=
-* Added rel=nofollow to links
+* Added rel=nofollow to links - Dedicado a Diego NadieDuerme.com
 
 = 1.1.1 =
 * Added Linux Mint.
