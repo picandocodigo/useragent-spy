@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.9
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 == Description ==
 
@@ -58,6 +58,9 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 1. Screenshot 1
 
 == Change log ==
+
+= 1.1.2=
+* Added rel=nofollow to links
 
 = 1.1.1 =
 * Added Linux Mint.
