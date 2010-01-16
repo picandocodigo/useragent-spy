@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 2.9
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 
 == Description ==
 
@@ -59,8 +59,11 @@ http://picandocodigo.net/programacion/wordpress/useragent-spy-wordpress-plugin-e
 
 == Change log ==
 
-= 1.1.2=
-* Added rel=nofollow to links - Dedicado a Diego NadieDuerme.com
+= 1.1.3 =
+* Added vBSEO (vBulletin SEO plugin) detection.
+
+= 1.1.2 =
+* Added rel=nofollow to links - Dedicado a Diego NadieDuerme.com.
 
 = 1.1.1 =
 * Added Linux Mint.
