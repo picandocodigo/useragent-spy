@@ -1,14 +1,14 @@
 <!--Options file for UserAgent Spy-->
 <form method="post" action="options.php">
 	<?php 
-		wp_nonce_field('update-options');
-		$uasize = get_option('uaspy_size');
-		$location = get_option('uaspy_location');
-		$surfing=get_option('uaspy_surfing');
-		$on=get_option('uaspy_on');
-		$uabool=get_option('uaspy_uabool');
-		$uatext = get_option('uaspy_show_text');
-        $uatracksize = get_option('uaspy_track_size');
+	 wp_nonce_field('update-options');
+$uasize = get_option('uaspy_size');
+$location = get_option('uaspy_location');
+$surfing = get_option('uaspy_surfing');
+$on = get_option('uaspy_on');
+$uabool = get_option('uaspy_uabool');
+$uatext = get_option('uaspy_show_text');
+$uatracksize = get_option('uaspy_track_size');
 	?>
 			<table>
 				<tr>
