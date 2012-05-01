@@ -10,9 +10,9 @@ Stable tag: 1.2
 
 UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It shows a message with an icon of the browser and O.S. You can customize the way the operative system and the browser are displayed, with text and icons, just icons, and where to display it. More customization could come soon.
 
-It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. The plugin was re-written on version 1.0rc1. It's arrived to a point where it does everything I wanted it to do, and the code was arranged so that adding new browsers, operative systems and devices is much easier now.
+It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser.
 
-Your feedback is very important, new features have been added by request, so if there’s something you would like to see in UA-Spy, leave a comment, and I’ll see what I can do.
+The development has been moved to [GitHub](https://github.com/picandocodigo/useragent-spy). Please make feature requests, bug reports or just fork and do a pull request on new code through Github. Your feedback is very important, new features have been added by request, so if there’s something you would like to see in UA-Spy, leave a comment, and I’ll see what I can do.
 
 Images created with The Gimp - http://www.gimp.org/
 
