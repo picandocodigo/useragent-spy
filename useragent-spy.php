@@ -3,12 +3,13 @@
 Plugin Name: UserAgent Spy
 Plugin URI: http://picandocodigo.net
 Description: UserAgent-Spy is a WordPress plugin which displays the user's Operative System and Web Browser in the comments. It uses the comment->agent property to access the UserAgent string, and through a series of regular expresions, detects the O.S. and browser. Then it shows a message with an icon of the browser and O.S.
-Version: 1.2
+Version: 1.3
 Author: Fernando Briano
 Author URI: http://picandocodigo.net
 */
 
-/* Copyright 2008  Fernando Briano  (email : transformers.es@gmail.com)
+/* 
+Copyright 2008-2012  Fernando Briano  (email : fernando@picandocodigo.net)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 3 of the License, or
@@ -22,7 +23,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+*/
 
 // Compatibility for pre-2.6
 if(!defined('WP_CONTENT_URL'))

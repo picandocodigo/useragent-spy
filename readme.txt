@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 3.2
-Stable tag: 1.2
+Stable tag: 1.3
 
 == Description ==
 
@@ -59,12 +59,18 @@ No questions yet. Got any question?
 
 == Change log ==
 
+= 1.3 =
+* Added a bunch of Samsung devices, Sony PlayStation 3, PSP, Vita.
+* Added WebKit detection.
+* Apple devices iOS version.
+* Added 64 bits differentiation.
+
 = 1.2 =
 * Retook development after a long while. Moving it to github.
 * Renamed variables to include uas prefix.
 * Refactored all the code, documented some more, improved here and there.
 * Now detects Apple devices, BlackBerry and HTC. More on the way :)
-* Detects PCLinuxOS
+* Detects PCLinuxOS.
 
 = 1.1.3 =
 * Added vBSEO (vBulletin SEO plugin) detection.

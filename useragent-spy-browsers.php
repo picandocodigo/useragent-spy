@@ -15,7 +15,7 @@ function detect_webbrowser($useragent){
 		$uas_browser['name'] = "Amaya";
 		$uas_browser['code'] = "amaya";
 		$uas_version = $regmatch[1];
-	}elseif (preg_match('#K-Meleon([/.0-9a-zA-Z]+)?#i', $useragent,$regmatch)){
+	}elseif (preg_match('#K-Meleon([.0-9a-zA-Z]+)#i', $useragent,$regmatch)){
 		$uas_browser['link'] = "http://kmeleon.sourceforge.net/";
 		$uas_browser['name'] = "K-Meleon";
 		$uas_browser['code'] = "kmeleon";
@@ -187,6 +187,11 @@ function detect_webbrowser($useragent){
 		$uas_browser['link'] = "http://www.apple.com/safari/";
 		$uas_browser['name'] = "Safari";
 		$uas_browser['code'] = "safari";
+		$uas_version = $regmatch[1];
+	}elseif(preg_match('#WebKit/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
+		$uas_browser['link'] = "http://www.webkit.org/";
+		$uas_browser['name'] = "WebKit";
+		$uas_browser['code'] = "webkit";
 		$uas_version = $regmatch[1];
 	}elseif(preg_match('#Mozilla/([.0-9a-zA-Z]+)#i', $useragent, $regmatch)){
 		$uas_browser['link'] = "http://mozilla.org";

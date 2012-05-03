@@ -38,6 +38,11 @@ function detect_os($useragent){
 		$uas_os['name'] = "Unknown O.S.";
 		$uas_os['code'] = "null";
 	}
+
+	if(preg_match('/x86_64/i', $useragent)){
+			$uas_os['name'] .= " 64 bits";
+	}
+
 	return $uas_os;
 }
 
@@ -124,25 +129,25 @@ function detect_distro($useragent){
 
 //Detect Windows Version:
 function detect_win($ver_match){
-	if (preg_match('/NT 6.0/i',$ver_match)){
+	if (preg_match('/NT 6.0/i', $ver_match)){
 		return "Vista";
-	}elseif (preg_match('/NT 5.1/i',$ver_match)){
+	}elseif (preg_match('/NT 5.1/i', $ver_match)){
 		return "XP";
-	}elseif (preg_match('/NT 5.0/i',$ver_match)){
+	}elseif (preg_match('/NT 5.0/i', $ver_match)){
 		return "2000";
-	}elseif (preg_match('/9x 4.90/i',$ver_match)){
+	}elseif (preg_match('/9x 4.90/i', $ver_match)){
 		return "ME";
-	}elseif (preg_match('/NT4.0/i',$ver_match)){
+	}elseif (preg_match('/NT4.0/i', $ver_match)){
 		return "NT 4";
-	}elseif (preg_match('/Win98/i',$ver_match)){
+	}elseif (preg_match('/Win98/i', $ver_match)){
 		return "98";
-	}elseif (preg_match('/CE/i',$ver_match)){
+	}elseif (preg_match('/CE/i', $ver_match)){
 		return "CE";
-	}elseif (preg_match('/NT 6.1|NT 7.0/i',$ver_match)){
+	}elseif (preg_match('/NT 6.1|NT 7.0/i', $ver_match)){
 		return "7";
-	}elseif (preg_match('/NT 6.2/i',$ver_match)){
+	}elseif (preg_match('/NT 6.2/i', $ver_match)){
 		return "8";
-	}elseif (preg_match('/NT/i',$ver_match)){
+	}elseif (preg_match('/NT/i', $ver_match)){
 		return "NT";
 	}else{
 		return "Unknown";
