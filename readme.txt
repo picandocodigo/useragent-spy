@@ -4,7 +4,7 @@ Donate Link: http://picandocodigo.net/wordpress/useragent-spy-wordpress-plugin_e
 Tags: useragent, browser, operative system, 
 Requires at least: 2.0
 Tested up to: 3.2
-Stable tag: 1.3
+Stable tag: 1.3.1
 
 == Description ==
 
@@ -58,6 +58,9 @@ No questions yet. Got any question?
 1. Screenshot 1
 
 == Change log ==
+
+= 1.3.1 =
+* Bugfix with device image always showing even when no device detected.
 
 = 1.3 =
 * Added a bunch of Samsung devices, Sony PlayStation 3, PSP, Vita.
